@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float movementSpeed = 6f;
 
     [SerializeField]
-    private float mouseSensitivity = 100f;
+    private float mouseSensitivity = 1000f;
 
     [SerializeField]
     [
@@ -16,14 +16,16 @@ public class PlayerMovement : MonoBehaviour
             "The maximum angle the player can look up and or down (in degrees)")
     ]
     private float maxLookAngle = 90f;
-    public Transform head;
 
+    public Transform head;
 
     private float xRotation = 0f;
 
+    private Rigidbody rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -34,13 +36,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 movement = new Vector3(horizontal, 0f, vertical);
+        Vector3 movement =
+            transform.right * horizontal + transform.forward * vertical;
 
-        transform.position += movement * movementSpeed * Time.deltaTime;
-
+        rb.AddForce(movement * movementSpeed * 1000f * Time.deltaTime);
     }
 
     private void RotatePlayer()
@@ -50,14 +52,11 @@ public class PlayerMovement : MonoBehaviour
         float mouseY =
             Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-
         xRotation += mouseY;
         xRotation = Mathf.Clamp(xRotation, -maxLookAngle, maxLookAngle);
 
         head.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         transform.Rotate(Vector3.up * mouseX);
-
-
     }
 }
