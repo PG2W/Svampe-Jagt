@@ -53,7 +53,8 @@ public class Inventory : MonoBehaviour
     }
 
     public void DecrementItemCount(int itemId)
-    {       //Decrement item count and if only 1 remove the item from the listd
+    {
+        //Decrement item count and if only 1 remove the item from the listd
         var itemInList = Items.FirstOrDefault(x => x.Id == itemId);
         if (itemInList != null)
         {
