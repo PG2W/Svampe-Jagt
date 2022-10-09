@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class PickupSvamp : MonoBehaviour
 {
     // // Start is called before the first frame update
     // void Start()
@@ -13,9 +13,9 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.B))
+        if (Input.GetKeyUp(KeyCode.E))
         {
-            print("a");
+            print("dick");
         }
 
     }

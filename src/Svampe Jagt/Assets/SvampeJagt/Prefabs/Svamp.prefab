@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 8408028937413496870}
   m_Layer: 0
   m_Name: Svamp
-  m_TagString: Untagged
+  m_TagString: Pickupable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
