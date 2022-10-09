@@ -7,13 +7,13 @@ public class BookMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var ingameMenuToggle    : boolean = false;
-        var helpMenuToggle      : boolean = false;
-        var scoreboardToggle    : boolean = false;
+        var ingameMenuToggle    = boolean = false;
+        var helpMenuToggle      = boolean = false;
+        var scoreboardToggle    = boolean = false;
     }
 
     // Update is called once per frame
-    function Update()
+    void Update()
     {
         if (Input.GetKeyDown (KeyCode.Escape ))
         {
@@ -31,7 +31,7 @@ public class BookMenu : MonoBehaviour
         }
     }
 
-    function.HelpMenuCall() {
+    void HelpMenuCall() {
 
         if (!helpMenuToggle)
         {
@@ -41,7 +41,7 @@ public class BookMenu : MonoBehaviour
 
     }
 
-    function ShowBookMenu() {
+    void ShowBookMenu() {
 
         GUI.BeginGroup (Rect ((scaledResolutionWidth / 2) -128,( Screen.height / 2) - 192, 256, 384));
             //GUI.Box (Rect (0,0,256,384), "Ingame menu");  // Make the group visible.
@@ -56,7 +56,7 @@ public class BookMenu : MonoBehaviour
         }
     }
 
-    function OnGUI() {
+    void OnGUI() {
 
         GUI.skin = guiSkin; // Set up gui skin
         // GUI is laid out for a 1920 x 1200 pixel display (16:10 aspect). The next line makes sure it rescales nicely to other resolutions.
