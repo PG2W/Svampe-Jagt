@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
     private float movementSpeed = 6f;
+
+    [SerializeField]
+    private float mouseSensitivity = 6f;
+
 
     void Start()
     {
@@ -22,5 +27,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(horizontal, 0f, vertical);
 
         transform.position += movement * movementSpeed * Time.deltaTime;
+
     }
 }

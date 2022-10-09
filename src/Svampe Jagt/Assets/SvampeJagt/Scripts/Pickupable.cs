@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupSvamp : MonoBehaviour
+public class Pickupable : MonoBehaviour
 {
     // // Start is called before the first frame update
     // void Start()
@@ -13,15 +13,11 @@ public class PickupSvamp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            print("dick");
-        }
-
     }
 
-    void Picked()
+    public void Picked()
     {
-        Destroy(gameObject);
+        Debug.Log("a");
+        Destroy(this.gameObject.transform.parent.gameObject);
     }
 }
