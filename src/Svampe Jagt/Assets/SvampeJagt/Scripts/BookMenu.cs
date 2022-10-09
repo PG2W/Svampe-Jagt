@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BookMenu : MonoBehaviour
 {
     
-    bool startMenuToggle     = false;
+    //bool startMenuToggle     = false;
     bool helpMenuToggle      = false;
-    bool pauseMenuToggle     = false;
+    //bool pauseMenuToggle     = false;
+
+    [SerializeField] GameObject helpMenu;
     
     // Start is called before the first frame update
     void Start()
@@ -23,30 +26,32 @@ public class BookMenu : MonoBehaviour
             
         }
     
-        if (Input.GetKeyDown (KeyCode.P)) // Helpmenu == H button in key setup
+        if (Input.GetKeyDown (KeyCode.P) && !helpMenuToggle) // Book Menu
         {
-            HelpMenuCall();
+            helpMenuToggle = true;
+            Cursor.lockState = CursorLockMode.None;
+            helpMenu.SetActive(true);
         }
     
-        if (Input.GetButtonDown ("scoreboard")) // Helpmenu == tab button in key setup
+         if (Input.GetKeyDown (KeyCode.P) && helpMenuToggle)
+        {
+            helpMenuToggle = false ;
+            Cursor.lockState = CursorLockMode.Locked;
+            helpMenu.SetActive(false);
+        }
+
+        if (Input.GetButtonDown ("scoreboard")) 
         {
             
         }
     }
 
-    void HelpMenuCall() {
 
-        if (!helpMenuToggle)
-        {
-            helpMenuToggle = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
 
-    }
+    /*public void ShowBookMenu() {
 
-    void ShowBookMenu() {
-
-        
+       helpMenu.SetActive(true);
+       
     }
 
     void OnGUI() {
@@ -64,7 +69,7 @@ public class BookMenu : MonoBehaviour
         }
                 
             
-        }
+        }*/
 }
 
 
