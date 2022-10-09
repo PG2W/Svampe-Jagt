@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 128406889}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -474,24 +474,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &453132653 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3340496125552515764, guid: 2f5c69eb496492e498a53b37af9c6e92,
-    type: 3}
-  m_PrefabInstance: {fileID: 4282402774969414467}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &453132654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453132653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f24b23389eed9f42945a5ac3db39274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &504576676
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +803,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &948683463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948683456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af321bd3df139de41b9f7864348acc38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1306956425
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +961,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 6
-  mouseSensitivity: 100
+  mouseSensitivity: 1000
+  maxLookAngle: 90
+  head: {fileID: 128406888}
+--- !u!114 &1508913106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508913103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f2b642b0b0c394fa60b1b5cb6ae5a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1753789402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,10 +1051,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 540763402415317709, guid: 2f5c69eb496492e498a53b37af9c6e92,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pickupable
+      objectReference: {fileID: 0}
     - target: {fileID: 3340496125552515764, guid: 2f5c69eb496492e498a53b37af9c6e92,
         type: 3}
       propertyPath: m_Name
       value: Svamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340496125552515764, guid: 2f5c69eb496492e498a53b37af9c6e92,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5159742522414488600, guid: 2f5c69eb496492e498a53b37af9c6e92,
         type: 3}
