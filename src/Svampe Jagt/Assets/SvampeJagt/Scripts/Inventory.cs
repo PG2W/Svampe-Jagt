@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,12 @@ using UnityEngine;
 
 public class Item
 {
-    public int Id;
+    public Guid Id = Guid.NewGuid();
     public string Name;
+    public int Quantity;
+    public GameObject Prefab;
 
-    public int Quantity = 1;
 
-    public Item(string name)
-    {
-        Name = name;
-    }
 }
 
 public class Inventory : MonoBehaviour
@@ -25,8 +23,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-
-
+        
     }
 
     void Update()
@@ -61,7 +58,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void DecrementItemCount(int itemId)
+    public void DecrementItemCount(Guid itemId)
     {
         //Decrement item count and if only 1 remove the item from the listd
         var itemInList = Items.FirstOrDefault(x => x.Id == itemId);
