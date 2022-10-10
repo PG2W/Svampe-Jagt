@@ -43,14 +43,10 @@ public class Pickup : MonoBehaviour
                 lr.SetPositions(positions);
 
 
-                Item pickedItem = new Item(pickedObjectName);
-                Debug.Log(pickedItem.Name);
+
+                var prefab = pickedObject.GetComponent<Pickupable>().Picked();
+                Item pickedItem = new Item(pickedObjectName, prefab);
                 _inv.AddItem(pickedItem);
-
-                // Debug.Log(Inv.Items);
-
-                pickedObject.GetComponent<Pickupable>().Picked();
-
             }
 
 

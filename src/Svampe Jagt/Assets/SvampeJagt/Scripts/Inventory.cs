@@ -12,9 +12,12 @@ public class Item
 
     public int Quantity = 1;
 
-    public Item(string name)
+    public GameObject Prefab;
+
+    public Item(string name, GameObject prefab)
     {
         Name = name;
+        Prefab = prefab;
     }
 }
 
@@ -35,7 +38,7 @@ public class Inventory : MonoBehaviour
         {
             foreach (var i in Items)
             {
-                Debug.Log(i.Name + ": " + i.Quantity);
+                Debug.Log(i.Name + ": " + i.Quantity + " + " + i.Prefab);
             }
         }
         if (Input.GetKeyUp(KeyCode.F))
