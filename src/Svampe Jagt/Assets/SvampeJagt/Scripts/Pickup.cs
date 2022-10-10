@@ -10,11 +10,14 @@ public class Pickup : MonoBehaviour
 
     float maxDistance = 1500f;
     LineRenderer lr;
+    Inventory _inv;
 
     // // Start is called before the first frame update
     void Start()
     {
         lr = transform.gameObject.AddComponent<LineRenderer>();
+        _inv = gameObject.GetComponent<Inventory>();
+
     }
 
     // Update is called once per frame
@@ -34,21 +37,22 @@ public class Pickup : MonoBehaviour
                 var positionOfShit = hit.collider.gameObject.transform.position;
 
                 var pickedObject = hit.collider.gameObject;
-                int pickedObjectId = pickedObject.GetComponent<Pickupable>().Id;
                 string pickedObjectName = pickedObject.GetComponent<Pickupable>().Name;
 
                 Vector3[] positions = { playerPosition, positionOfShit };
                 lr.SetPositions(positions);
 
 
-                Item pickedItem = new Item(pickedObjectId, pickedObjectName);
-                Debug.Log(pickedItem.Id);
-                // Debug.Log(Inv.Items);
+                Item pickedItem = new Item(pickedObjectName);
+                Debug.Log(pickedItem.Name);
+                _inv.AddItem(pickedItem);
 
+                // Debug.Log(Inv.Items);
 
                 pickedObject.GetComponent<Pickupable>().Picked();
 
             }
+
 
 
         }

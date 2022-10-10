@@ -10,11 +10,10 @@ public class Item
     public int Id;
     public string Name;
 
-    public int quantity;
+    public int Quantity;
 
-    public Item(int id, string name)
+    public Item(string name)
     {
-        Id = id;
         Name = name;
     }
 }
@@ -34,7 +33,17 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.I))
         {
-            print("dick");
+            foreach (var i in Items)
+            {
+                Debug.Log(i.Name + ": " + i.Quantity);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            foreach (var i in Items)
+            {
+                ++i.Quantity;
+            }
         }
     }
 
@@ -45,7 +54,7 @@ public class Inventory : MonoBehaviour
         var itemInList = Items.FirstOrDefault(x => x.Id == item.Id);
         if (itemInList != null)
         {
-            itemInList.quantity++;
+            itemInList.Quantity++;
             return;
         }
 
@@ -58,10 +67,10 @@ public class Inventory : MonoBehaviour
         var itemInList = Items.FirstOrDefault(x => x.Id == itemId);
         if (itemInList != null)
         {
-            if (itemInList.quantity <= 1)
+            if (itemInList.Quantity <= 1)
                 Items.Remove(itemInList);
             else
-                itemInList.quantity--;
+                itemInList.Quantity--;
 
         }
 
