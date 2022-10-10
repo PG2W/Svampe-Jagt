@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3f3f9eb21f1834296104fc8c1934b3, type: 3}
   m_Name: red-shroom
   m_EditorClassIdentifier: 
-  Name: 
-  Prefab: {fileID: 0}
-  InitialQuantity: 0
+  Name: red-shroom
+  Prefab: {fileID: 4755581000857059446, guid: 2f5c69eb496492e498a53b37af9c6e92, type: 3}
+  InitialQuantity: 1
