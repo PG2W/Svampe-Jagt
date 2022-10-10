@@ -10,7 +10,7 @@ public class Item
     public int Id;
     public string Name;
 
-    public int Quantity;
+    public int Quantity = 1;
 
     public Item(string name)
     {
@@ -57,8 +57,8 @@ public class Inventory : MonoBehaviour
             itemInList.Quantity++;
             return;
         }
-
         Items.Add(item);
+
     }
 
     public void DecrementItemCount(int itemId)
