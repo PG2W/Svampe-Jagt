@@ -22,11 +22,11 @@ public class Item
 public class Inventory : MonoBehaviour
 {
 
-    List<Item> Items = new(); //TODO. Implement localstorage or something
-
+    public List<Item> Items = new(); //TODO. Implement localstorage or something
 
     void Start()
     {
+
 
     }
 

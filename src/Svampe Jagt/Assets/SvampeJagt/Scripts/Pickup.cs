@@ -10,6 +10,7 @@ public class Pickup : MonoBehaviour
 
     float maxDistance = 1500f;
     LineRenderer lr;
+
     // // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +29,24 @@ public class Pickup : MonoBehaviour
 
             if (Physics.Raycast(playerPosition, forwardDirection, out RaycastHit hit, maxDistance) && hit.collider != null && hit.collider.gameObject.CompareTag("Pickupable"))
             {
+
                 Debug.Log("hello im here");
                 var positionOfShit = hit.collider.gameObject.transform.position;
 
+                var pickedObject = hit.collider.gameObject;
+                int pickedObjectId = pickedObject.GetComponent<Pickupable>().Id;
+                string pickedObjectName = pickedObject.GetComponent<Pickupable>().Name;
+
                 Vector3[] positions = { playerPosition, positionOfShit };
                 lr.SetPositions(positions);
-                hit.collider.gameObject.GetComponent<Pickupable>().Picked();
+
+
+                Item pickedItem = new Item(pickedObjectId, pickedObjectName);
+                Debug.Log(pickedItem.Id);
+                // Debug.Log(Inv.Items);
+
+
+                pickedObject.GetComponent<Pickupable>().Picked();
 
             }
 

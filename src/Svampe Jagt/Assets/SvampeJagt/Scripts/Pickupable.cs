@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Pickupable : MonoBehaviour
 {
-    // // Start is called before the first frame update
-    // void Start()
-    // {
 
-    // }
+    [SerializeField] public int Id = 0;
+    public string Name = "red-shroom";
+
+    // // Start is called before the first frame update
+    void Start()
+    {
+
+
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -18,6 +24,7 @@ public class Pickupable : MonoBehaviour
     public void Picked()
     {
         Debug.Log("a");
+
         Destroy(this.gameObject.transform.parent.gameObject);
     }
 }
