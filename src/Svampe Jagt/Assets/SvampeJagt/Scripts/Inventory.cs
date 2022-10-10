@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class Item
 {
-    public Guid Id = Guid.NewGuid();
     public string Name;
     public int Quantity;
     public GameObject Prefab;
@@ -23,7 +22,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -48,7 +47,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item item)
     {
         //Add if not already in array otherwise increment count
-        var itemInList = Items.FirstOrDefault(x => x.Id == item.Id);
+        var itemInList = Items.FirstOrDefault(x => x.Name == item.Name);
         if (itemInList != null)
         {
             itemInList.Quantity++;
@@ -58,10 +57,10 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void DecrementItemCount(Guid itemId)
+    public void DecrementItemCount(string name)
     {
         //Decrement item count and if only 1 remove the item from the listd
-        var itemInList = Items.FirstOrDefault(x => x.Id == itemId);
+        var itemInList = Items.FirstOrDefault(x => x.Name == name);
         if (itemInList != null)
         {
             if (itemInList.Quantity <= 1)

@@ -6,6 +6,7 @@ public class Drop : MonoBehaviour
 {
 
 
+    public ItemDictionaryScriptableObject itemDictionaryScriptableObject;
     Inventory _inv;
     public GameObject redSvamp;
     // Start is called before the first frame update
@@ -18,10 +19,11 @@ public class Drop : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Q) && _inv.Items.Count > 0)
         {
             var pos = transform.position + transform.forward * 2;
-            Instantiate(redSvamp, pos, Quaternion.identity);
+            Instantiate(_inv.Items[0].Prefab, pos, Quaternion.identity);
+            _inv.DecrementItemCount(_inv.Items[0].Name);
         }
 
     }

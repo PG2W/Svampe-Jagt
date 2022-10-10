@@ -22,12 +22,10 @@ public class Pickupable : MonoBehaviour
     {
     }
 
-    public GameObject Picked()
+    public void Picked()
     {
         Debug.Log("a");
         var go = transform.parent.gameObject;
-        var sut = Instantiate(go); //TODO: FUCK ME HARD AND REMOVE ME AFTER OTHER PRACTICES ARE IN USE!!!
         Destroy(go);
-        return sut;
     }
 }
