@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
         {
             foreach (var i in Items)
             {
-                Debug.Log(i.Name + ": " + i.Quantity);
+                Debug.Log(i.Name + ": " + i.Quantity + " + " + i.Prefab);
             }
         }
         if (Input.GetKeyUp(KeyCode.F))
