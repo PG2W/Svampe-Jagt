@@ -8,7 +8,6 @@ public class Pickup : MonoBehaviour
 
 {
 
-    public ItemDictionaryScriptableObject itemDictionaryScriptableObject;
     float maxDistance = 1500f;
     LineRenderer lr;
     Inventory _inv;
@@ -46,7 +45,7 @@ public class Pickup : MonoBehaviour
 
 
                 pickedObject.GetComponent<Pickupable>().Picked();
-                Item pickedItem = itemDictionaryScriptableObject.GetItem(pickedObjectName);
+                Item pickedItem = _inv.itemDictionaryScriptableObject.GetItem(pickedObjectName);
                 _inv.AddItem(pickedItem);
             }
 

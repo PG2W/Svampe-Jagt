@@ -20,10 +20,9 @@ public class Inventory : MonoBehaviour
 
     public List<Item> Items = new(); //TODO. Implement localstorage or something
 
-    void Start()
-    {
+    public Action OnInventoryUpdated;
+    public ItemDictionaryScriptableObject itemDictionaryScriptableObject;
 
-    }
 
     void Update()
     {
@@ -51,10 +50,13 @@ public class Inventory : MonoBehaviour
         if (itemInList != null)
         {
             itemInList.Quantity++;
-            return;
         }
-        Items.Add(item);
+        else
+        {
+            Items.Add(item);
+        }
 
+        OnInventoryUpdated?.Invoke();
     }
 
     public void DecrementItemCount(string name)
@@ -68,6 +70,7 @@ public class Inventory : MonoBehaviour
             else
                 itemInList.Quantity--;
 
+            OnInventoryUpdated?.Invoke();
         }
 
     }

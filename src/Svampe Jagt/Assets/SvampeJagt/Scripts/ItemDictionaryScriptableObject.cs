@@ -23,4 +23,15 @@ public class ItemDictionaryScriptableObject : ScriptableObject
             Quantity = item.InitialQuantity
         };
     }
+
+    public Sprite GetItemSprite(string name){
+        var item = itemDictionary.FirstOrDefault(x => x.Name == name);
+        if (item == null)
+        {
+            Debug.LogError("Item not found in dictionary");
+            return null;
+        }
+
+        return item.Sprite;
+    }
 }
