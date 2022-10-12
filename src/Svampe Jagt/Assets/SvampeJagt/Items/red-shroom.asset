@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: red-shroom
   m_EditorClassIdentifier: 
   Name: red-shroom
-  Prefab: {fileID: 4755581000857059446, guid: 2f5c69eb496492e498a53b37af9c6e92, type: 3}
+  Prefab: {fileID: 4755581000857059446, guid: 93327784a137219439bb3b55e084626e, type: 3}
   InitialQuantity: 1
   Sprite: {fileID: 21300000, guid: 730c6857f8ed65142a4fc2dc2688db9a, type: 3}
