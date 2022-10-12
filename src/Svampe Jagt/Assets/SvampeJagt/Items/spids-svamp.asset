@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: spids-svamp
   m_EditorClassIdentifier: 
   Name: spids-shroom
-  Prefab: {fileID: 4755581000857059446, guid: 67a6316227cfd2c48ace9fbb77c64b44, type: 3}
+  Prefab: {fileID: 7258443577786546650, guid: 67a6316227cfd2c48ace9fbb77c64b44, type: 3}
   InitialQuantity: 1
   Sprite: {fileID: 21300000, guid: 990764a84b2d63f4e88a1bbe48d211e3, type: 3}
