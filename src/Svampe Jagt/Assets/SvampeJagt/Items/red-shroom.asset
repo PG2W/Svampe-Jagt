@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3f3f9eb21f1834296104fc8c1934b3, type: 3}
+  m_Name: red-shroom
+  m_EditorClassIdentifier: 
+  Name: red-shroom
+  Prefab: {fileID: 4755581000857059446, guid: 93327784a137219439bb3b55e084626e, type: 3}
+  InitialQuantity: 1
+  Sprite: {fileID: 21300000, guid: 730c6857f8ed65142a4fc2dc2688db9a, type: 3}

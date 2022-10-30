@@ -5,24 +5,29 @@ using UnityEngine;
 public class Drop : MonoBehaviour
 {
 
-
     Inventory _inv;
-    public GameObject redSvamp;
-    // Start is called before the first frame update
+
     void Start()
     {
         _inv = gameObject.GetComponent<Inventory>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            var pos = transform.position + transform.forward * 2;
-            Instantiate(redSvamp, pos, Quaternion.identity);
+            DropItemFirstItem();
         }
 
+    }
+
+    private void DropItemFirstItem()
+    {
+        if(_inv.Items.Count <= 0) return;
+
+        var pos = transform.position + transform.forward * 2;
+        Instantiate(_inv.Items[0].Prefab, pos, Quaternion.identity);
+        _inv.DecrementItemCount(_inv.Items[0].Name);
     }
 }

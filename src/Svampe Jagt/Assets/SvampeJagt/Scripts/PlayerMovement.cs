@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof (CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    private CharacterController characterController;
+
     [SerializeField]
     private float movementSpeed = 6f;
 
@@ -12,26 +15,63 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     [
-        Header(
+        Tooltip(
             "The maximum angle the player can look up and or down (in degrees)")
     ]
     private float maxLookAngle = 90f;
 
     public Transform head;
 
-    private float xRotation = 0f;
+    public float gravityConstant = 9.82f;
 
-    private Rigidbody rb;
+    public float jumpHeight = 1f;
+
+    public GroundChecker groundChecker;
+
+    private float xRotation = 45f;
+
+    private float currentVelocity = 0f;
+
+    private bool jumpCooldown = false;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         MovePlayer();
         RotatePlayer();
+        ApplyGravity();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
+
+    private void Jump()
+    {
+        if (groundChecker.IsGrounded)
+        {
+            Debug.Log("Jump");
+            currentVelocity += -Mathf.Sqrt(jumpHeight * 2f * gravityConstant); //Derives from v^2=2gs
+            StartCoroutine(ApplyJumpCooldown());
+        }
+    }
+
+    IEnumerator ApplyJumpCooldown()
+    {
+        jumpCooldown = true;
+        yield return new WaitForSeconds(0.5f);
+        jumpCooldown = false;
     }
 
     private void MovePlayer()
@@ -40,9 +80,24 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 movement =
-            transform.right * horizontal + transform.forward * vertical;
+            (transform.right * horizontal + transform.forward * vertical)
+                .normalized;
 
-        rb.AddForce(movement * movementSpeed * 1000f * Time.deltaTime);
+        characterController.Move(movement * movementSpeed * Time.deltaTime);
+    }
+
+    private void ApplyGravity()
+    {
+        characterController
+            .Move(Vector3.down * currentVelocity * Time.deltaTime);
+
+        if (groundChecker.IsGrounded && !jumpCooldown)
+        {
+            currentVelocity = 0f;
+            return;
+        }
+
+        currentVelocity += gravityConstant * Time.deltaTime;
     }
 
     private void RotatePlayer()

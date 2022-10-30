@@ -44,8 +44,8 @@ public class Pickup : MonoBehaviour
 
 
 
-                var prefab = pickedObject.GetComponent<Pickupable>().Picked();
-                Item pickedItem = new Item(pickedObjectName, prefab);
+                pickedObject.GetComponent<Pickupable>().Picked();
+                Item pickedItem = _inv.itemDictionaryScriptableObject.GetItem(pickedObjectName);
                 _inv.AddItem(pickedItem);
             }
 

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3f3f9eb21f1834296104fc8c1934b3, type: 3}
+  m_Name: spids-svamp
+  m_EditorClassIdentifier: 
+  Name: spids-shroom
+  Prefab: {fileID: 7258443577786546650, guid: 67a6316227cfd2c48ace9fbb77c64b44, type: 3}
+  InitialQuantity: 1
+  Sprite: {fileID: 21300000, guid: 990764a84b2d63f4e88a1bbe48d211e3, type: 3}
