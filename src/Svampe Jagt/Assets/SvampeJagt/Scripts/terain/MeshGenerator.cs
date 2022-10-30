@@ -5,9 +5,9 @@ using UnityEngine;
 public static class MeshGenerator
 {
     public static MeshData GenerateMeshData(int width, int height, float noiseScale, int seed,
-                                  int nOctaves, float percistance, float lacranaraty, Vector2 offsett, float amplitude)
+                                  int nOctaves, float percistance, float lacranaraty, Vector2 offsett, float amplitude, int normalsPerVertex)
     {
-        float[,] heightMap = Noise.MakeNoiseMap(width, height, noiseScale, seed,
+        float[,] heightMap = Noise.MakeNoiseMap(width * normalsPerVertex, height * normalsPerVertex, noiseScale / normalsPerVertex, seed,
                                   nOctaves, percistance, lacranaraty, offsett);
                                   
         MeshData meshData = new MeshData(width, height);
@@ -17,7 +17,7 @@ public static class MeshGenerator
         {
             for (int z = 0; z < height; z++)
             {
-                float y = heightMap[x, z] * amplitude;
+                float y = heightMap[x * normalsPerVertex, z * normalsPerVertex] * amplitude;
                 meshData.vertices[verticeIndex] = new Vector3(x, y, z);
 
                 if (x < width - 1 && z < height - 1)
@@ -32,6 +32,8 @@ public static class MeshGenerator
 
         return meshData;
     }
+
+
 }
 
 
@@ -42,6 +44,7 @@ public class MeshData
     public int[] triangles;
 
     int numberOfTriangles;
+
 
     public MeshData(int meshWidth, int meshHeight)
     {
@@ -57,4 +60,5 @@ public class MeshData
         triangles[numberOfTriangles + 2] = c;
         numberOfTriangles += 3;
     }
+
 }

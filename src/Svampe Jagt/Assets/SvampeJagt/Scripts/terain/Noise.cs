@@ -22,12 +22,7 @@ public static class Noise
       {
         for (int x = 0; x < width; x++)
         {
-          float xf = x * 1f;
-          float zf = z * 1f;
           float y = Mathf.PerlinNoise(x * freq * scale + xOffset, z * freq * scale + yOffset) * amp;
-
-          // float y = Mathf.PerlinNoise(xf, zf);
-
           noiseMap[x, z] += y;
 
         }

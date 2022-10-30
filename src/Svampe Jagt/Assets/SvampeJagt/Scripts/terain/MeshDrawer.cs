@@ -8,6 +8,8 @@ public class MeshDrawer : MonoBehaviour
     public int planeHeight = 5;
 
     public int resolution = 200;
+
+    public int normalsPerVertex = 5;
     public int seed = 0;
     public float noiseScale = 15.0f;
     public float amplitude = 10.0f;
@@ -27,15 +29,17 @@ public class MeshDrawer : MonoBehaviour
     void Start()
     {
         mesh = new Mesh();
+        mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         int meshWidth = resolution;
-        int meshHeight = resolution * planeHeight / planeWidth;
+        int meshHeight = resolution;// * planeHeight / planeWidth;
         meshData = MeshGenerator.GenerateMeshData(meshWidth, meshHeight, noiseScale, seed,
-                                                  nOctaves, percistance, lacranaraty, offsett, amplitude);
+                                                  nOctaves, percistance, lacranaraty, offsett, amplitude, normalsPerVertex);
 
         scaleFactor =  planeWidth / (float) meshWidth;
 
         ApplyMeshData(meshData);
         GetComponent<MeshFilter>().mesh = mesh;
+        GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
     // Update is called once per frame
