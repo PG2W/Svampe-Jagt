@@ -5,10 +5,10 @@ using UnityEngine;
 
 public static class Noise
 {
-  public static float[,] MakeNoiseMap(int width, int height, float scale, int seed,
+  public static float[] MakeNoiseMap(int mapSize, float scale, int seed,
                                    int nOctaves, float percistance, float lacranaraty, Vector2 offsett)
   {
-    float[,] noiseMap = new float[width, height];
+    float[] map = new float[mapSize * mapSize];
     float freq = lacranaraty;
     float amp = percistance;
     System.Random random = new System.Random(seed);
@@ -16,14 +16,19 @@ public static class Noise
     float xOffset = random.Next(-100000, 100000) + offsett.x;
     float yOffset = random.Next(-100000, 100000) + offsett.y;
 
+    float minValue = 0;
+    float maxValue = 0;
+
     for (int oct = 0; oct < nOctaves; oct++)
     {
-      for (int z = 0; z < height; z++)
+      for (int z = 0; z < mapSize; z++)
       {
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < mapSize; x++)
         {
           float y = Mathf.PerlinNoise(x * freq * scale + xOffset, z * freq * scale + yOffset) * amp;
-          noiseMap[x, z] += y;
+          minValue = Mathf.Min(minValue, y);
+          maxValue = Mathf.Max(maxValue, y);
+          map[x + z * mapSize] += y;
 
         }
       }
@@ -31,7 +36,16 @@ public static class Noise
       amp *= percistance;
     }
 
-    return noiseMap;
+    //normalize
+    if (minValue != maxValue)
+    {
+      for (int i = 0; i < mapSize * mapSize; i++)
+      {
+        map[i] = (map[i] - minValue) / (maxValue - minValue);
+      }
+    }
+
+    return map;
   }
 }
 

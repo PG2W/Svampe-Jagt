@@ -335,13 +335,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcba6dbea4044697ae8672fabf21343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeWidth: 255
-  planeHeight: 255
-  resolution: 500
-  normalsPerVertex: 5
+  planeWidth: 1000
+  planeHeight: 1000
+  resolution: 255
+  normalsPerVertex: 1
   seed: 0
   noiseScale: 0.005
-  amplitude: 100
+  amplitude: 60
   nOctaves: 30
   lacranaraty: 2
   percistance: 0.4
@@ -375,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}
@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class MeshDrawer : MonoBehaviour
 {
-    public int planeWidth = 5;
-    public int planeHeight = 5;
+    public int planeWidth = 1000;
+    public int planeHeight = 1000;
 
-    public int resolution = 200;
+    public int resolution = 255;
 
-    public int normalsPerVertex = 5;
+    public int normalsPerVertex = 1;
     public int seed = 0;
-    public float noiseScale = 15.0f;
-    public float amplitude = 10.0f;
-    public int nOctaves = 15;
+    public float noiseScale = 0.005f;
+    public float amplitude = 60.0f;
+    public int nOctaves = 30;
     public float lacranaraty = 2.0f;
     public float percistance = 0.4f;
     public Vector2 offsett;
@@ -32,7 +32,7 @@ public class MeshDrawer : MonoBehaviour
         mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         int meshWidth = resolution;
         int meshHeight = resolution;// * planeHeight / planeWidth;
-        meshData = MeshGenerator.GenerateMeshData(meshWidth, meshHeight, noiseScale, seed,
+        meshData = MeshGenerator.GenerateMeshData(meshWidth, noiseScale, seed,
                                                   nOctaves, percistance, lacranaraty, offsett, amplitude, normalsPerVertex);
 
         scaleFactor =  planeWidth / (float) meshWidth;

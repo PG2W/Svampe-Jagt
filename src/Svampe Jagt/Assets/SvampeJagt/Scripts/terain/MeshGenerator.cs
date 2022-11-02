@@ -4,26 +4,30 @@ using UnityEngine;
 
 public static class MeshGenerator
 {
-    public static MeshData GenerateMeshData(int width, int height, float noiseScale, int seed,
+    public static MeshData GenerateMeshData(int mapSize, float noiseScale, int seed,
                                   int nOctaves, float percistance, float lacranaraty, Vector2 offsett, float amplitude, int normalsPerVertex)
     {
-        float[,] heightMap = Noise.MakeNoiseMap(width * normalsPerVertex, height * normalsPerVertex, noiseScale / normalsPerVertex, seed,
+        float[] heightMap = Noise.MakeNoiseMap(mapSize * normalsPerVertex, noiseScale / normalsPerVertex, seed,
                                   nOctaves, percistance, lacranaraty, offsett);
-                                  
-        MeshData meshData = new MeshData(width, height);
+
+        heightMap = Erosion.EroteMap(heightMap, mapSize * normalsPerVertex, 70000, 0.05f, 4f, 0.3f, 0.01f, 0.3f, -4.0f, 0.01f, 0.000001f, 30, 3);
+
+    
+
+        MeshData meshData = new MeshData(mapSize, mapSize);
         int verticeIndex = 0;
 
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < mapSize; x++)
         {
-            for (int z = 0; z < height; z++)
+            for (int z = 0; z < mapSize; z++)
             {
-                float y = heightMap[x * normalsPerVertex, z * normalsPerVertex] * amplitude;
+                float y = heightMap[x * normalsPerVertex + z * normalsPerVertex * mapSize] * amplitude;
                 meshData.vertices[verticeIndex] = new Vector3(x, y, z);
 
-                if (x < width - 1 && z < height - 1)
+                if (x < mapSize - 1 && z < mapSize - 1)
                 {
-                    meshData.AddTriangle(verticeIndex, verticeIndex + 1, verticeIndex + width);
-                    meshData.AddTriangle(verticeIndex + 1, verticeIndex + width + 1, verticeIndex + width);
+                    meshData.AddTriangle(verticeIndex, verticeIndex + 1, verticeIndex + mapSize);
+                    meshData.AddTriangle(verticeIndex + 1, verticeIndex + mapSize + 1, verticeIndex + mapSize);
                 }
                 
                 verticeIndex++;
