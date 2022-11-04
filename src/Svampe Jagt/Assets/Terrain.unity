@@ -337,15 +337,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeWidth: 1000
   planeHeight: 1000
-  resolution: 255
+  resolution: 1000
   normalsPerVertex: 1
-  seed: 0
-  noiseScale: 0.005
-  amplitude: 60
+  seed: 2
+  noiseScale: 0.0025
+  amplitude: 120
   nOctaves: 30
   lacranaraty: 2
   percistance: 0.4
   offsett: {x: 0, y: 0}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.06993148, g: 0.13207549, b: 0.06666075, a: 1}
+    key1: {r: 0.095209375, g: 0.14150941, b: 0.06875222, a: 1}
+    key2: {r: 0.16981131, g: 0.12525587, b: 0.0985226, a: 0}
+    key3: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
+    key4: {r: 1, g: 1, b: 1, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 193
+    ctime1: 3855
+    ctime2: 5590
+    ctime3: 10023
+    ctime4: 32575
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 2
 --- !u!64 &455703129
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -375,7 +404,7 @@ PrefabInstance:
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}
@@ -385,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2858999502011816324, guid: 3c2a2aff771254e478a3c743c0a0a3ea,
         type: 3}

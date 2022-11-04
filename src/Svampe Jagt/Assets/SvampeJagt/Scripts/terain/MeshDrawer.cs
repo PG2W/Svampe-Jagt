@@ -18,6 +18,8 @@ public class MeshDrawer : MonoBehaviour
     public float percistance = 0.4f;
     public Vector2 offsett;
 
+    public Gradient gradient;
+
 
     MeshData meshData;
 
@@ -33,7 +35,7 @@ public class MeshDrawer : MonoBehaviour
         int meshWidth = resolution;
         int meshHeight = resolution;// * planeHeight / planeWidth;
         meshData = MeshGenerator.GenerateMeshData(meshWidth, noiseScale, seed,
-                                                  nOctaves, percistance, lacranaraty, offsett, amplitude, normalsPerVertex);
+                                                  nOctaves, percistance, lacranaraty, offsett, amplitude, normalsPerVertex, gradient);
 
         scaleFactor =  planeWidth / (float) meshWidth;
 
@@ -45,13 +47,18 @@ public class MeshDrawer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // meshData = MeshGenerator.GenerateMeshData(resolution, noiseScale, seed,
+        //                                           nOctaves, percistance, lacranaraty, offsett, amplitude, normalsPerVertex, gradient);
+
+        // ApplyMeshData(meshData);
     }
 
     void ApplyMeshData(MeshData meshData)
     {
+        mesh.Clear();
         mesh.vertices = meshData.vertices;
         mesh.triangles = meshData.triangles;
+        mesh.colors = meshData.colors;
         mesh.RecalculateNormals();
 
         transform.localScale = Vector3.one * scaleFactor;
