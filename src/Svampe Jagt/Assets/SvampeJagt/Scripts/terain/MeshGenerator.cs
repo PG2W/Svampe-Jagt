@@ -12,12 +12,12 @@ public static class MeshGenerator
 
 
         
-        Erosion.EroteMap(heightMap, mapSize * normalsPerVertex, 1000000, 0.05f, 4f, 0.3f, 0.01f, 0.3f, -4.0f, 0.01f, 0.000001f, 30, 5);
+        Erosion.EroteMap(heightMap, mapSize * normalsPerVertex, 200000, 0.05f, 4f, 0.3f, 0.01f, 0.3f, -4.0f, 0.01f, 0.000001f, 30, 3);
 
         var blurMap = new float[heightMap.GetLength(0)];
-        blurMap = ArrayMath.BlurArray(heightMap, 2, mapSize, mapSize);
+        blurMap = ArrayMath.BlurArray(heightMap, 5, mapSize, mapSize);
 
-        heightMap = ArrayMath.CombineArrays(heightMap, blurMap, 0.0f);
+        heightMap = ArrayMath.CombineArrays(heightMap, blurMap, 0.5f);
         // for (int i = 0; i < heightMap.GetLength(0) / 2; i++)
         // {
         //     heightMap[i] = errotedMap[i];

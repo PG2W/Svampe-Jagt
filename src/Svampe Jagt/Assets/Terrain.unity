@@ -337,7 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeWidth: 1000
   planeHeight: 1000
-  resolution: 1000
+  resolution: 400
   normalsPerVertex: 1
   seed: 2
   noiseScale: 0.0025
@@ -353,15 +353,15 @@ MonoBehaviour:
     key2: {r: 0.16981131, g: 0.12525587, b: 0.0985226, a: 0}
     key3: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
     key4: {r: 1, g: 1, b: 1, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 1, g: 1, b: 1, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 193
-    ctime1: 3855
-    ctime2: 5590
-    ctime3: 10023
-    ctime4: 32575
-    ctime5: 0
+    ctime1: 9252
+    ctime2: 11565
+    ctime3: 12722
+    ctime4: 14649
+    ctime5: 32575
     ctime6: 0
     ctime7: 0
     atime0: 0
